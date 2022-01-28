@@ -42,5 +42,75 @@ function long(a) {
 }
 console.log(long("Lorem ipsum charsett dolor sit amet."));
 
-// ---------5-----------------------------
-function myfn(arr, fn) {}
+let persons = [
+  {
+    name: "Aram",
+    age: function () {
+      return Math.floor(Math.random() * 100);
+    },
+    country: "USA",
+    vote: 1,
+  },
+];
+
+function addPerson() {
+  let name = document.getElementById("personName").value;
+
+  let exist = persons.find((p) => p.name === name);
+
+  if (exist) {
+    exist.vote += 1;
+  } else {
+    let person = {
+      name: name,
+      age: function () {
+        return Math.floor(Math.random() * 100);
+      },
+      country: "USA",
+      vote: 1,
+    };
+    persons.push(person);
+  }
+
+  console.log(persons);
+  sortPersons(persons);
+  createTable(persons);
+}
+
+function createTable(array) {
+  let tbody = document.createElement("tbody");
+  tbody.id = "tbody";
+
+  array.forEach((each) => {
+    let tr = document.createElement("tr");
+    let nametd = document.createElement("td");
+    let agetd = document.createElement("td");
+    let countrytd = document.createElement("td");
+    let votetd = document.createElement("td");
+
+    nametd.innerHTML = each.name;
+    agetd.innerHTML = each.age();
+    countrytd.innerHTML = each.country;
+    votetd.innerHTML = each.vote;
+
+    tr.append(nametd, agetd, countrytd, votetd);
+    tbody.append(tr);
+  });
+
+  emptyTable();
+  document.getElementsByTagName("table")[0].append(tbody);
+}
+
+function emptyTable() {
+  var parent = document.getElementById("tb");
+  var child = document.getElementById("tbody");
+  if (child) {
+    parent.removeChild(child);
+  }
+}
+
+function sortPersons(array) {
+  array.sort((a, b) => +b.vote - +a.vote);
+}
+
+createTable(persons);

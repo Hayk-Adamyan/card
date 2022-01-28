@@ -1,0 +1,41 @@
+
+td,
+th {
+    border: 10px solid;
+    padding: 20px;
+    width: 100px;
+    height: 30px;
+    
+}
+/* .border{
+    border: 1px solid;
+    padding: 5px;
+} */
+
+/* table {
+    width:400px;
+    height: 200px;
+    margin: 0 auto;
+ 
+  
+} */
+
+table {
+    margin: 0px;
+    padding: 0;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.form{
+  margin: 10px;
+    width: 200px;
+    height: 30px;
+    display: flex;
+}
+.black{
+    width: 610px;
+}
+
+
+
+
